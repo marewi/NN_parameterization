@@ -122,5 +122,8 @@ def main(argv):
     qtable_directions.close()
     print(f"SAVED: qtable_values_{data_filter}_{timestamp}.txt")
 
+    x, y = max(q_table.items(), key=operator.itemgetter(1))[0]
+    print(colored(f"state with highest Q value: x={x}, y={y}", 'green'))
+
 if __name__ == "__main__":
     main(sys.argv[1:])
