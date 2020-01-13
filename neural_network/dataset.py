@@ -31,7 +31,7 @@ class Data(Dataset):
                      transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
                  ])):
 
-        fname = 'train_result.csv' if is_train else 'test_result.csv'
+        fname = 'neural_network/train_result.csv' if is_train else 'neural_network/test_result.csv'
         self.transform = transform
         self.is_train = is_train
 
