@@ -37,11 +37,11 @@ class Net(nn.Module):
 
         return shape, color, coord
 
-if __name__ == '__main__':
-    net = Net()
-    inp = torch.rand(1,3,128,128)
+# if __name__ == '__main__':
+#     net = Net()
+#     inp = torch.rand(1,3,128,128)
 
-    output = net(inp)
+#     output = net(inp)
 
-    for o in output:
-        print(o.shape)
+#     for o in output:
+#         print(o.shape)

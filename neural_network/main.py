@@ -14,6 +14,7 @@ from dataset import Data, imshow, label2color, label2shape
 # trained model path
 MODEL_PATH = 'model.pth.tar'
 
+def test(): return("hallo")
 
 def write_to_file(text, file):
     with open(file, 'a') as f:
@@ -213,7 +214,7 @@ def test():
         shape_acc = (shape_acc.sum() / shape_acc.shape[0]) * 100
         print(f'Shape accuracy: {shape_acc:.4f}')
 
-if __name__ == '__main__':
-    train()
-    # test()
+# if __name__ == '__main__':
+#     train()
+#     # test()
 
