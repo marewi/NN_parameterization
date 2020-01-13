@@ -19,9 +19,9 @@ class Agent:
             self.change(batch_size=-1) # lower
         
         if choice == 4:
-            self.change(learning_rate=0.00001) # higher
+            self.change(learning_rate=0.001) # higher
         elif choice == 5:
-            self.change(learning_rate=-0.00001) # lower
+            self.change(learning_rate=-0.001) # lower
 
 
     def change(self, num_epochs=False, batch_size=False, learning_rate=False):
@@ -29,20 +29,20 @@ class Agent:
         self.batch_size += batch_size
         self.learning_rate += learning_rate
 
-        # 0 <= num_epochs <= 100
-        # 0 <= batch_size <= 100
+        # 1 <= num_epochs <= 10
+        # 1 <= batch_size <= 10
         # 0 <= learning_rate <= 1
 
         # fix limits of parameters
-        if self.num_epochs < 0:
-            self.num_epochs = 0
-        elif self.num_epochs > 100:
-            self.num_epochs = 100
+        if self.num_epochs < 1:
+            self.num_epochs = 1
+        elif self.num_epochs > 10:
+            self.num_epochs = 10
 
-        if self.batch_size < 0:
-            self.batch_size = 0
-        elif self.batch_size > 100:
-            self.batch_size = 100
+        if self.batch_size < 1:
+            self.batch_size = 1
+        elif self.batch_size > 10:
+            self.batch_size = 10
 
         if self.learning_rate < 0:
             self.learning_rate = 0

@@ -10,26 +10,28 @@ from neural_network.main import train
 LR = 0.1
 DISCOUNT = 0.95
 epsilon = 0.5
+print("Creating RL model...")
 q_table = Model_table().q_table
 episode_rewards = []
 
-for _ in range(10):
+print("Starting to train RL model...")
+for _ in range(1):
     for episode in range(10):
-        agent = Agent(num_epochs=0, batch_size=0, learning_rate=0)
+        agent = Agent(num_epochs=1, batch_size=1, learning_rate=0)
         episode_reward = 0
         for step in range(10):
             state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
             if np.random.random() > epsilon:
-                action = np.argmax(q_table[state])
+                action = np.argmin(q_table[state])
             else:
-                action = np.random.randint(0, 4)
+                action = np.random.randint(0, 6)
             # rewarding
             reward = train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
             new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
-            max_future_q = np.max(q_table[new_state])
+            min_future_q = np.min(q_table[new_state])
             current_q = q_table[state][action]
             # Q value calculations
-            new_q = (1-LR) * current_q + LR * (reward + DISCOUNT*max_future_q)
+            new_q = (1-LR) * current_q + LR * (reward + DISCOUNT*min_future_q)
             q_table[state][action] = new_q
             episode_reward += reward
             # TODO: break needed?
