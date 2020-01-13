@@ -68,17 +68,17 @@ class Data(Dataset):
         return img, shape, color, coords, fname
 
 
-if __name__ == '__main__':
-    ds = Data(is_train=True)
-    dl = torch.utils.data.DataLoader(ds, batch_size=1, shuffle=True, num_workers=1)
+# if __name__ == '__main__':
+#     ds = Data(is_train=True)
+#     dl = torch.utils.data.DataLoader(ds, batch_size=1, shuffle=True, num_workers=1)
 
-    for img, shape, color, coord, _ in dl:
-        plt.title(f'shape: {shape.item()}, '
-              f'color {color.item()}, '
-              f'x {coord[0][1] * 128}, '
-              f'y {coord[0][0] * 128}')
+#     for img, shape, color, coord, _ in dl:
+#         plt.title(f'shape: {shape.item()}, '
+#               f'color {color.item()}, '
+#               f'x {coord[0][1] * 128}, '
+#               f'y {coord[0][0] * 128}')
 
-        imshow(img[0], idx=0)
+#         imshow(img[0], idx=0)
 
 
 
