@@ -1,5 +1,5 @@
-# def testNN(param1, param2):
-#     print(f"testNN running with param1={param1} & param2={param2}")
-#     loss=0.5
-#     # runtime=100
-#     return(loss)
+from neural_network.main import train
+
+loss = train(2,2, 0.001)
+
+print (f"loss: {loss}")
