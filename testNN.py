@@ -1,5 +1,5 @@
-from neural_network.main import train
+# from neural_network.main import train
 
-loss = train(2,2, 0.001)
+# loss = train(2,2, 0.001)
 
-print (f"loss: {loss}")
+# print (f"loss: {loss}")

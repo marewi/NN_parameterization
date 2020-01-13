@@ -1,11 +1,13 @@
-from __environment import Agent
-from __testNN import testNN
-from __modelTable import Model_table
-
 import numpy as np
 
-# parameters:
-LEARNING_RATE = 0.1
+from environment import Agent
+from modelTable import Model_table
+# from testNN import testNN
+from neural_network.main import train
+
+
+### parameters:
+LR = 0.1
 DISCOUNT = 0.95
 epsilon = 0.5
 q_table = Model_table().q_table
@@ -13,22 +15,21 @@ episode_rewards = []
 
 for _ in range(10):
     for episode in range(10):
-        agent = Agent(param1=0, param2=0)
+        agent = Agent(num_epochs=0, batch_size=0, learning_rate=0)
         episode_reward = 0
         for step in range(10):
-            state = (agent.param1, agent.param2)
+            state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
             if np.random.random() > epsilon:
                 action = np.argmax(q_table[state])
             else:
                 action = np.random.randint(0, 4)
             # rewarding
-            reward = testNN(agent.param1, agent.param2) # calling neural network
-            new_state = (agent.param1, agent.param2)
+            reward = train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
+            new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
             max_future_q = np.max(q_table[new_state])
             current_q = q_table[state][action]
             # Q value calculations
-            new_q = (1-LEARNING_RATE) * current_q + \
-                LEARNING_RATE * (reward + DISCOUNT*max_future_q)
+            new_q = (1-LR) * current_q + LR * (reward + DISCOUNT*max_future_q)
             q_table[state][action] = new_q
             episode_reward += reward
             # TODO: break needed?
