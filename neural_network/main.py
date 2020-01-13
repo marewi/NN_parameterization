@@ -95,15 +95,17 @@ def train(end_epoch, batch_size):
 
         bar.finish()
 
-    print('Finished Training')
+    # print('Finished Training')
 
-    print('loss_avg: {losses.avg:.4f}')
+    # print('loss_avg: {losses.avg:.4f}')
 
-    print('Saving model')
+    # print('Saving model')
 
-    save_plots(plot_dict)
+    # save_plots(plot_dict)
 
-    torch.save(net.state_dict(), MODEL_PATH)
+    # torch.save(net.state_dict(), MODEL_PATH)
+
+    return(losses.avg)
 
 
 # Testing of NN
