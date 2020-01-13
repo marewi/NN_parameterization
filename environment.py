@@ -8,6 +8,7 @@ class Agent:
         return f"num_epochs: {self.num_epochs}, batch_size: {self.batch_size}, learning_rate: {self.learning_rate}"
 
     def action(self, choice):
+        print(f"action {choice} will be taken")
         if choice == 0:
             self.change(num_epochs=1) # higher
         elif choice == 1:

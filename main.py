@@ -2,7 +2,6 @@ import numpy as np
 
 from environment import Agent
 from modelTable import Model_table
-# from testNN import testNN
 from neural_network.main import train
 
 
@@ -16,10 +15,10 @@ episode_rewards = []
 
 print("Starting to train RL model...")
 for _ in range(1):
-    for episode in range(10):
+    for episode in range(1):
         agent = Agent(num_epochs=1, batch_size=1, learning_rate=0)
         episode_reward = 0
-        for step in range(10):
+        for step in range(3):
             state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
             if np.random.random() > epsilon:
                 action = np.argmin(q_table[state])
@@ -27,6 +26,7 @@ for _ in range(1):
                 action = np.random.randint(0, 6)
             # rewarding
             reward = train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
+            print(f"reward = {reward}")
             new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
             min_future_q = np.min(q_table[new_state])
             current_q = q_table[state][action]
