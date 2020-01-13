@@ -4,10 +4,10 @@
     docker attach <container>
 
 ### build image
-    docker build --rm -f Dockerfile -t finding-a-point .
+    docker build --rm -f Dockerfile -t nn_parameterization .
 
 ### run container
-    docker run --rm -it -p 0.0.0.0:6006:6006 finding-a-point
+    docker run --rm -it -p 0.0.0.0:6006:6006 nn_parameterization
 
 ### clone repo in container
     git checkout <branch-name>
