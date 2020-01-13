@@ -8,7 +8,6 @@ RUN apt-get update -y && \
 
 RUN pip install --upgrade pip && \
     pip install -U pylint --user && \
-    pip install Pillow==6.0 && \
     pip install opencv-python && \
     pip install matplotlib && \
     pip install xlrd && \
@@ -17,7 +16,8 @@ RUN pip install --upgrade pip && \
     pip install torch && \
     pip install pandas && \
     pip install progress && \
-    pip install torchvision
+    pip install torchvision && \
+    pip install Pillow==6.0
 
 WORKDIR '/nn_parameterization'
 
