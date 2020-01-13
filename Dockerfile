@@ -19,7 +19,7 @@ WORKDIR '/nn_parameterization'
 
 RUN git lfs install && \
     git init && \
-    git remote add origin https://c1cabe97056d6f0fd36f0ae90f3681ed9c650e11:x-oauth-basic@github.com/marewi/NN_parameterization.git && \
+    git remote add origin https://16a6694e2b383d172a811e77dec1477a4cc32e58:x-oauth-basic@github.com/marewi/NN_parameterization.git && \
     git fetch && \
     git config --global user.email "marc-wittlinger@gmx.de" && \
     git config --global user.name "Marc Wittlinger"
