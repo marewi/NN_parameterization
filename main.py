@@ -1,5 +1,6 @@
 import numpy as np
 import operator
+from termcolor import colored
 
 from environment import Agent
 from modelTable import Model_table
@@ -16,17 +17,18 @@ for episode in range(episodes):
     agent = Agent(num_epochs=1, batch_size=1, learning_rate=0)
     episode_reward = 0
     for step in range(steps):
+        print(f"---------------------------------{episode}")
         state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
         if np.random.random() > epsilon:
             action = np.argmax(q_table[state])
         else:
-            print("random action will be taken")
+            print(colored("random action will be taken", 'blue'))
             action = np.random.randint(0, 6)
         agent.action(action) # take the action
         # rewarding
         reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
         print(f"{agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
-        print(f"reward = {reward}")
+        print(colored(f"reward = {reward}", 'green'))
         new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
         max_future_q = np.max(q_table[new_state])
         current_q = q_table[state][action]

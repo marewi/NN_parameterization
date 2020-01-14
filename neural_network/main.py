@@ -30,7 +30,7 @@ def save_plots(plot_dict):
 
 # Training of NN
 def train(end_epoch, batch_size, learning_rate):
-    print(f'training running with end_epoch = {end_epoch} & batch_size = {batch_size} & learning_rate = {learning_rate}')
+    # print(f'training running with end_epoch = {end_epoch} & batch_size = {batch_size} & learning_rate = {learning_rate}')
 
     # end_epoch = 20
     # batch_size = 16
