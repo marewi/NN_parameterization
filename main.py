@@ -26,8 +26,8 @@ for episode in range(episodes):
             action = np.random.randint(0, 6)
         agent.action(action) # take the action
         # rewarding
-        reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
         print(f"{agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
+        reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
         print(colored(f"reward = {reward}", 'green'))
         new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
         max_future_q = np.max(q_table[new_state])
