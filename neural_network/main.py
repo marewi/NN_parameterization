@@ -39,7 +39,7 @@ def train(end_epoch, batch_size, learning_rate):
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-    print('Creating Model')
+    print('Creating NN Model')
     net = Net().to(device)
 
     train_ds = Data(is_train=True)
@@ -55,12 +55,12 @@ def train(end_epoch, batch_size, learning_rate):
         'coord': [],
     }
 
-    print('Started Training')
+    print('Started NN Training')
     for epoch in range(end_epoch):
 
         losses = AverageMeter()
 
-        bar = Bar(f'Epoch {epoch + 1}/{end_epoch}', fill='#', max=len(train_dl))
+        # bar = Bar(f'Epoch {epoch + 1}/{end_epoch}', fill='#', max=len(train_dl))
 
         for i, data in enumerate(train_dl, 0):
 
@@ -84,16 +84,16 @@ def train(end_epoch, batch_size, learning_rate):
             for k, v in loss_dict.items():
                 plot_dict[k].append(v.item())
 
-            summary_string = f'({i + 1}/{len(train_dl)}) | Total: {bar.elapsed_td} | ' \
-                             f'ETA: {bar.eta_td:} | loss: {losses.avg:.4f}'
+            # summary_string = f'({i + 1}/{len(train_dl)}) | Total: {bar.elapsed_td} | ' \
+            #                  f'ETA: {bar.eta_td:} | loss: {losses.avg:.4f}'
 
-            for k, v in loss_dict.items():
-                summary_string += f' | {k}: {v:.4f}'
+            # for k, v in loss_dict.items():
+            #     summary_string += f' | {k}: {v:.4f}'
 
-            bar.suffix = summary_string
-            bar.next()
+        #     bar.suffix = summary_string
+        #     bar.next()
 
-        bar.finish()
+        # bar.finish()
 
     # print('Finished Training')
 
