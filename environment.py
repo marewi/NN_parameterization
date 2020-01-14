@@ -30,6 +30,13 @@ class Agent:
         self.batch_size += batch_size
         self.learning_rate += learning_rate
 
+        if(num_epochs != 0):
+            print(self.num_epochs)
+        if(batch_size != 0):
+            print(self.batch_size)
+        if(learning_rate != 0):
+            print(self.learning_rate)
+
         # 1 <= num_epochs <= 10
         # 1 <= batch_size <= 10
         # 0 <= learning_rate <= 1
