@@ -17,4 +17,4 @@
     python main.py
 
 ### TODOS
-- [ ] dont calculate new_q when running against barriers
+- [ ] dont calculate new_q when running against barriers (e.g. penalizing when barrier)

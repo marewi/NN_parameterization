@@ -18,20 +18,20 @@ for episode in range(episodes):
     for step in range(steps):
         state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
         if np.random.random() > epsilon:
-            action = np.argmin(q_table[state])
+            action = np.argmax(q_table[state])
         else:
             print("random action will be taken")
             action = np.random.randint(0, 6)
         agent.action(action) # take the action
         # rewarding
-        reward = train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
+        reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
         print(f"{agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
         print(f"reward = {reward}")
         new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
-        min_future_q = np.min(q_table[new_state])
+        max_future_q = np.max(q_table[new_state])
         current_q = q_table[state][action]
         # Q value calculations
-        new_q = (1-LR) * current_q - LR * (reward + DISCOUNT*min_future_q)
+        new_q = (1-LR) * current_q + LR * (reward + DISCOUNT*max_future_q)
         print(f"old q value: {current_q}")
         print(f"new q value: {new_q}")
         q_table[state][action] = new_q
@@ -42,7 +42,7 @@ for episode in range(episodes):
 
 # print(q_table)
 # print(episode_rewards)
-best_parameter_set = min(q_table.items(), key=operator.itemgetter(1))[0]
-best_reward = min(q_table.items(), key=operator.itemgetter(1))[1]
+best_parameter_set = max(q_table.items(), key=operator.itemgetter(1))[0]
+best_reward = max(q_table.items(), key=operator.itemgetter(1))[1]
 print(f"best combination of paramters are {best_parameter_set}")
 print(f"{best_reward}")
