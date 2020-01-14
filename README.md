@@ -15,3 +15,6 @@
 
 ### run script
     python main.py
+
+### TODOS
+- [ ] dont calculate new_q when running against barriers

@@ -12,7 +12,7 @@ learning_rate_stepsize = 0.001
 episodes = 1
 
 # amount of steps (per episode)
-steps = 10
+steps = 20
 
 # learning rate of RL
 LR = 0.1

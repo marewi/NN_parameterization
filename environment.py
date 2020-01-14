@@ -16,12 +16,12 @@ class Agent:
         elif choice == 1:
             self.change(num_epochs=-num_epochs_stepsize) # lower
         
-        if choice == 2:
+        elif choice == 2:
             self.change(batch_size=batch_size_stepsize) # higher
         elif choice == 3:
             self.change(batch_size=-batch_size_stepsize) # lower
         
-        if choice == 4:
+        elif choice == 4:
             self.change(learning_rate=learning_rate_stepsize) # higher
         elif choice == 5:
             self.change(learning_rate=-learning_rate_stepsize) # lower
