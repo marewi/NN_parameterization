@@ -14,4 +14,4 @@ print("-------------------------------")
 # print(tt.items(), key=operator.itemgetter(1))
 # print(max(tt.items(), key=operator.itemgetter(1)))
 for key in tt:
-    print(tt.keys())
+    print(np.argmax(tt[key]))
