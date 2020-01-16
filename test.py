@@ -11,7 +11,5 @@ for i in range(3):
 
 print(tt)
 print("-------------------------------")
-# print(tt.items(), key=operator.itemgetter(1))
-# print(max(tt.items(), key=operator.itemgetter(1)))
 for key in tt:
     print(np.argmax(tt[key]))
