@@ -17,14 +17,18 @@ for episode in range(episodes):
     agent = Agent(num_epochs=1, batch_size=1, learning_rate=0)
     episode_reward = 0
     for step in range(steps):
-        print(f"---------------------------------{episode}")
+        print(f"---------------------------------{episode}, {step}")
         state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
         if np.random.random() > epsilon:
             action = np.argmax(q_table[state])
         else:
             print(colored("random action will be taken", 'blue'))
             action = np.random.randint(0, 6)
-        agent.action(action) # take the action
+        try: 
+            agent.action(action) # take the action
+        except:
+            print("barrier")
+            break
         # rewarding
         print(f"{agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
         reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
@@ -38,7 +42,6 @@ for episode in range(episodes):
         print(f"new q value: {new_q}")
         q_table[state][action] = new_q
         episode_reward += reward
-        # TODO: break needed?
     episode_rewards.append(episode_reward)
     epsilon *= EPSILON_DECAY
 

@@ -9,10 +9,10 @@ learning_rate_stepsize = 0.001
 ################################
 ### LEARNING PARAMETERS
 # amount of episodes
-episodes = 1
+episodes = 2
 
 # amount of steps (per episode)
-steps = 20
+steps = 3
 
 # learning rate of RL
 LR = 0.1
