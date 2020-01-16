@@ -24,13 +24,14 @@ for episode in range(episodes):
         else:
             print(colored("random action will be taken", 'blue'))
             action = np.random.randint(0, 6)
-        try: 
+        print(f"current state: {agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
+        try:
             agent.action(action) # take the action
-        except:
-            print("barrier")
-            break
+        except: # if agent runs against barrier of environment
+            print(colored("barrier", 'red'))
+            continue
         # rewarding
-        print(f"{agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
+        print(f"new state: {agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
         reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
         print(colored(f"reward = {reward}", 'green'))
         new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
@@ -49,5 +50,5 @@ for episode in range(episodes):
 # print(episode_rewards)
 best_parameter_set = max(q_table.items(), key=operator.itemgetter(1))[0]
 best_reward = max(q_table.items(), key=operator.itemgetter(1))[1]
-print(f"best combination of paramters are {best_parameter_set}")
+print(f"best combination of parameters are {best_parameter_set}")
 print(f"{best_reward}")

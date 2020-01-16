@@ -1,12 +1,17 @@
-# from neural_network.main import train
+from parameters import num_epochs_stepsize, batch_size_stepsize, learning_rate_stepsize
+import operator
+import numpy as np
 
-# loss = train(2,2, 0.001)
+tt = {}
 
-# print (f"loss: {loss}")
+for i in range(3):
+            for ii in range(1):
+                for iii in range(1):
+                    tt[(i,ii,iii)] = [np.random.randint(1,10) for i in range(6)]
 
-
-# a = -5
-# b = 3
-# b += a
-# print(f"a: {a}")
-# print(f"b: {b}")
+print(tt)
+print("-------------------------------")
+# print(tt.items(), key=operator.itemgetter(1))
+# print(max(tt.items(), key=operator.itemgetter(1)))
+for key in tt:
+    print(tt.keys())
