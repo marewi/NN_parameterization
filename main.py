@@ -46,6 +46,7 @@ for episode in range(episodes):
     episode_rewards.append(episode_reward)
     epsilon *= EPSILON_DECAY
 
+print(f"---------------------------TRAINING IS DONE----------------------------")
 # print(q_table)
 # print(episode_rewards)
 
@@ -58,12 +59,5 @@ for key in q_table:
         max_v_value = v_value
         max_v_value_key = key
 
-print(f"overall max V value: {max_v_value}")
-print(f"overall best parameter set: {max_v_value_key}")
-
-
-
-# best_parameter_set = max(q_table.items(), key=operator.itemgetter(1))[0]
-# best_reward = max(q_table.items(), key=operator.itemgetter(1))[1]
-# print(f"best combination of parameters are {best_parameter_set}")
-# print(f"{best_reward}")
+print(colored(f"overall max V value: {max_v_value}", 'cyan'))
+print(colored(f"overall best parameter set: {max_v_value_key}", 'cyan'))
