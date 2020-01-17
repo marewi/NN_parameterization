@@ -12,4 +12,6 @@ for i in range(3):
 print(tt)
 print("-------------------------------")
 for key in tt:
-    print(np.argmax(tt[key]))
+    print(f"argmax: {np.argmax(tt[key])}")
+    print(f"max: {np.max(tt[key])}")
+    print(f"key: {key}")

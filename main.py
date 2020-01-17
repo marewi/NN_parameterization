@@ -48,7 +48,22 @@ for episode in range(episodes):
 
 # print(q_table)
 # print(episode_rewards)
-best_parameter_set = max(q_table.items(), key=operator.itemgetter(1))[0]
-best_reward = max(q_table.items(), key=operator.itemgetter(1))[1]
-print(f"best combination of parameters are {best_parameter_set}")
-print(f"{best_reward}")
+
+### identify best parameter set
+max_v_value = 0
+max_v_value_key = (0,0,0)
+for key in q_table:
+    v_value = np.max(q_table[key])
+    if v_value > max_v_value:
+        max_v_value = v_value
+        max_v_value_key = key
+
+print(f"overall max V value: {max_v_value}")
+print(f"overall best parameter set: {max_v_value_key}")
+
+
+
+# best_parameter_set = max(q_table.items(), key=operator.itemgetter(1))[0]
+# best_reward = max(q_table.items(), key=operator.itemgetter(1))[1]
+# print(f"best combination of parameters are {best_parameter_set}")
+# print(f"{best_reward}")
