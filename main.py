@@ -11,6 +11,7 @@ from parameters import LR, DISCOUNT, epsilon, EPSILON_DECAY, episodes, steps
 print("Creating RL model...")
 q_table = Model_table().q_table
 episode_rewards = []
+barrier_counter = 0
 
 print("Starting to train RL model...")
 for episode in range(episodes):
@@ -28,6 +29,7 @@ for episode in range(episodes):
         try:
             agent.action(action) # take the action
         except: # if agent runs against barrier of environment
+            barrier_counter +=1
             print(colored("barrier", 'red'))
             continue
         # rewarding
@@ -58,6 +60,8 @@ for key in q_table:
     if v_value > max_v_value:
         max_v_value = v_value
         max_v_value_key = key
+
+print(f"amount of barrier bumps: {barrier_counter}")
 
 print(colored(f"overall max V value: {max_v_value}", 'cyan'))
 print(colored(f"overall best parameter set: {max_v_value_key}", 'cyan'))
