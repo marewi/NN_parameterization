@@ -1,4 +1,5 @@
 import numpy as np
+import math
 import operator
 from termcolor import colored
 
@@ -16,10 +17,16 @@ barrier_counter = 0
 print("Starting to train RL model...")
 for episode in range(episodes):
     # start agent in random state
-    agent = Agent(num_epochs=np.random.randint(num_epochs_min, num_epochs_max), \
-        batch_size=np.random.randint(batch_size_min, batch_size_max), \
-        learning_rate=np.random.randint(learning_rate_min/learning_rate_stepsize, \
-            learning_rate_max/learning_rate_stepsize)*learning_rate_stepsize)
+    num_epochs_start = np.random.randint(num_epochs_min, num_epochs_max)
+    batch_size_start = np.random.randint(batch_size_min, batch_size_max)
+    learning_rate_start = np.random.randint(learning_rate_min/learning_rate_stepsize, \
+            learning_rate_max/learning_rate_stepsize)*learning_rate_stepsize
+    lr_decimal_place = str(abs(int(math.log10(learning_rate_stepsize)))) # decimal place of lr_stepsize
+    lr_decimal_place_str = "{0:." + lr_decimal_place + "f}"  # "{0:.2f}" # building formating string
+    learning_rate_start = float(lr_decimal_place_str.format(learning_rate_start))
+    agent = Agent(num_epochs=num_epochs_start, \
+        batch_size=batch_size_start, \
+        learning_rate=learning_rate_start)
     episode_reward = 0
     for step in range(steps):
         print(f"---------------------------------{episode}, {step}")

@@ -22,3 +22,4 @@
     - [X] random start
 - [ ] partitioning of training process
     - [ ] save Q-values in table
+- [ ] outsourcing of dynamic start generation in lib
