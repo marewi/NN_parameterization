@@ -1,17 +1,13 @@
-# from parameters import num_epochs_stepsize, batch_size_stepsize, learning_rate_stepsize
-# import operator
+# from parameters import *
 # import numpy as np
 
-# tt = {}
+# num_epochs=np.random.randint(num_epochs_min, num_epochs_max)
+# batch_size=np.random.randint(batch_size_min, batch_size_max)
+# learning_rate=np.random.randint(learning_rate_min/learning_rate_stepsize, \
+#     learning_rate_max/learning_rate_stepsize)*learning_rate_stepsize
 
-# for i in range(3):
-#             for ii in range(1):
-#                 for iii in range(1):
-#                     tt[(i,ii,iii)] = [np.random.randint(1,10) for i in range(6)]
 
-# print(tt)
-# print("-------------------------------")
-# for key in tt:
-#     print(f"argmax: {np.argmax(tt[key])}")
-#     print(f"max: {np.max(tt[key])}")
-#     print(f"key: {key}")
+
+# print(num_epochs)
+# print(batch_size)
+# print(learning_rate)

@@ -19,4 +19,6 @@
 ### TODOS
 - [?] dont calculate new_q when running against barriers (e.g. penalizing when barrier)
 - [ ] make Q-values independend on amount of visits of state-action pair
-    - [ ] random start
+    - [X] random start
+- [ ] partitioning of training process
+    - [ ] save Q-values in table

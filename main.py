@@ -5,7 +5,7 @@ from termcolor import colored
 from environment import Agent
 from modelTable import Model_table
 from neural_network.main import train
-from parameters import LR, DISCOUNT, epsilon, EPSILON_DECAY, episodes, steps
+from parameters import *
 
 
 print("Creating RL model...")
@@ -15,7 +15,11 @@ barrier_counter = 0
 
 print("Starting to train RL model...")
 for episode in range(episodes):
-    agent = Agent(num_epochs=1, batch_size=1, learning_rate=0)
+    # start agent in random state
+    agent = Agent(num_epochs=np.random.randint(num_epochs_min, num_epochs_max), \
+        batch_size=np.random.randint(batch_size_min, batch_size_max), \
+        learning_rate=np.random.randint(learning_rate_min/learning_rate_stepsize, \
+            learning_rate_max/learning_rate_stepsize)*learning_rate_stepsize)
     episode_reward = 0
     for step in range(steps):
         print(f"---------------------------------{episode}, {step}")

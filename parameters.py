@@ -19,10 +19,10 @@ learning_rate_max = 0.5
 ################################
 ### LEARNING PARAMETERS
 # amount of episodes
-episodes = 1
+episodes = 5
 
 # amount of steps (per episode)
-steps = 100
+steps = 5
 
 # learning rate of RL
 LR = 0.1
