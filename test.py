@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e0aad899b9e3a84e1b846b511ee0e83ad6a1dcdc2b65f1d00bcb04df71917af9
-size 199
+from neural_network.main import train
+
+try:
+    test_reward = train(1, 15, 0.428)
+except Exception as e:
+    print(str(e))
+
+# if test_reward == 'nan':
+#     print("Error caught")
+
+print(test_reward)
+
