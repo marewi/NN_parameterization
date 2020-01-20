@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fc64b632d79c7affa4db89f849e6e0b570df9b2b4292a9486472700b5defc0a8
-size 867
+# Optimization of a Neural Network by finding the optimal combination of parameters
+
+### build image
+    docker build --rm -f Dockerfile -t nn_parameterization .
+
+### run container
+    docker run --rm -it -p 0.0.0.0:6006:6006 nn_parameterization
+
+### conncecting to running container
+    docker attach <container>
+
+### clone repo in container
+    git checkout <branch-name>
+    git pull
+
+### run script
+    python main.py
+
+### TODOS
+- [X] dont calculate new_q when running against barriers (e.g. penalizing when barrier)
+- [ ] make Q-values independend on amount of visits of state-action pair
+    - [X] random start
+- [X] multithreading/-processing to catch errors in NN-training
+- [ ] instead of train NN in every state, use old reward if state was visited before
+- [ ] num_workers?
+- [ ] momentum
+- [ ] when is nan?
+- [ ] partitioning of training process
+    - [ ] save Q-values in table
+- [ ] outsourcing of dynamic start generation in lib
