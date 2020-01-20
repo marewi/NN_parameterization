@@ -22,6 +22,7 @@
     - [X] random start
 - [X] multithreading/-processing to catch errors in NN-training
 - [ ] instead of train NN in every state, use old reward if state was visited before
+- [ ] multi-agent RL
 - [ ] num_workers?
 - [ ] momentum
 - [ ] when is nan?
