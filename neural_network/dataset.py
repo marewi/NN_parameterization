@@ -38,6 +38,8 @@ class Data(Dataset):
         with open(fname, 'r') as f:
             self.data = [l.rstrip().split(',') for l in f.readlines()[1:]]
 
+        print(f"amount of images: {len(self)}")
+
     def __len__(self):
         return len(self.data)
 
