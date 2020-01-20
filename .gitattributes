@@ -1,11 +1,1 @@
-README.md filter=lfs diff=lfs merge=lfs -text
-__pycache__ filter=lfs diff=lfs merge=lfs -text
 core filter=lfs diff=lfs merge=lfs -text
-lib filter=lfs diff=lfs merge=lfs -text
-
-Dockerfile filter=lfs diff=lfs merge=lfs -text
-environment.py filter=lfs diff=lfs merge=lfs -text
-main.py filter=lfs diff=lfs merge=lfs -text
-modelTable.py filter=lfs diff=lfs merge=lfs -text
-neural_network filter=lfs diff=lfs merge=lfs -text
-parameters.py filter=lfs diff=lfs merge=lfs -text
