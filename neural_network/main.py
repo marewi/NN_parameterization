@@ -80,9 +80,11 @@ def train(end_epoch, batch_size, learning_rate):
             loss.backward()
             optimizer.step()
 
-            plot_dict['total'].append(loss.item())
-            for k, v in loss_dict.items():
-                plot_dict[k].append(v.item())
+            # print(losses.avg)
+
+            # plot_dict['total'].append(loss.item())
+            # for k, v in loss_dict.items():
+            #     plot_dict[k].append(v.item())
 
             # summary_string = f'({i + 1}/{len(train_dl)}) | Total: {bar.elapsed_td} | ' \
             #                  f'ETA: {bar.eta_td:} | loss: {losses.avg:.4f}'
@@ -96,13 +98,9 @@ def train(end_epoch, batch_size, learning_rate):
         # bar.finish()
 
     # print('Finished Training')
-
     # print('loss_avg: {losses.avg:.4f}')
-
     # print('Saving model')
-
     # save_plots(plot_dict)
-
     # torch.save(net.state_dict(), MODEL_PATH)
 
     return(losses.avg)

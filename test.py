@@ -1,7 +1,7 @@
 from neural_network.main import train
 
 try:
-    test_reward = train(1, 15, 0.428)
+    test_reward = train(5, 10, 0.001)
 except Exception as e:
     print(str(e))
 
