@@ -25,20 +25,22 @@ for episode in range(episodes):
     lr_decimal_place = str(abs(int(math.log10(learning_rate_stepsize)))) # decimal place of lr_stepsize
     lr_decimal_place_str = "{0:." + lr_decimal_place + "f}"  # "{0:.2f}" # building formating string
     learning_rate_start = float(lr_decimal_place_str.format(learning_rate_start))
+    momentum_start = np.random.randint(momentum_min, momentum_max)
     # create agent in random start
     agent = Agent(num_epochs=num_epochs_start, \
         batch_size=batch_size_start, \
-        learning_rate=learning_rate_start)
+        learning_rate=learning_rate_start, \
+        momentum=momentum_start)
     episode_reward = 0
     for step in range(steps):
         print(f"---------------------------------{episode}, {step}")
-        state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
+        state = (agent.num_epochs, agent.batch_size, agent.learning_rate, agent.momentum)
         if np.random.random() > epsilon:
             action = np.argmax(q_table[state])
         else:
             print(colored("random action will be taken", 'blue'))
-            action = np.random.randint(0, 6)
-        print(f"current state: {agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")     
+            action = np.random.randint(0, 8)
+        print(f"current state: {agent.num_epochs} | {agent.batch_size} | {agent.learning_rate} | {agent.momentum}")     
         try:
             agent.action(action) # take the action
         except: # if agent runs against barrier of environment
@@ -46,18 +48,18 @@ for episode in range(episodes):
             print(colored("barrier", 'red'))
             continue
         # rewarding
-        print(f"new state: {agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
+        print(f"new state: {agent.num_epochs} | {agent.batch_size} | {agent.learning_rate} | {agent.momentum}")
         if experienced_rewards[state] > 0:
                 reward = experienced_rewards[state]
                 print(f"reward is experienced yet & was gestored")
         else:
             try:
-                reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
+                reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate, agent.momentum) # calling neural network
             except Exception as e: # e.g. when "can't allocate memory"
                 print(e)
                 continue
         print(colored(f"reward = {reward}", 'green'))
-        new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
+        new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate, agent.momentum)
         max_future_q = np.max(q_table[new_state])
         current_q = q_table[state][action]
         # Q value calculations
@@ -77,7 +79,7 @@ print(f"---------------------------TRAINING IS DONE----------------------------"
 
 ### identify best parameter set
 max_v_value = 0
-max_v_key = (0,0,0)
+max_v_key = (0,0,0,0)
 for key in q_table:
     v_value = np.max(q_table[key])
     if v_value > max_v_value:

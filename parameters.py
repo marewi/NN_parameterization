@@ -4,6 +4,7 @@
 num_epochs_stepsize = 1
 batch_size_stepsize = 1
 learning_rate_stepsize = 0.001
+momentum_stepsize = 0.1
 
 # barriers of parameters
 num_epochs_min = 1
@@ -11,9 +12,13 @@ num_epochs_max = 2
 
 batch_size_min = 10
 batch_size_max = 20
+batch_size = 100
 
 learning_rate_min = 0
 learning_rate_max = 0.1
+
+momentum_min = 0
+momentum_max = 1
 
 
 ################################

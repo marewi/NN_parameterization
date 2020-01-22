@@ -30,7 +30,7 @@ def save_plots(plot_dict):
 
 
 # Training of NN
-def train(end_epoch, batch_size, learning_rate):
+def train(end_epoch, batch_size, learning_rate, momentum):
     start_time = time.time()
     # print(f'training running with end_epoch = {end_epoch} & batch_size = {batch_size} & learning_rate = {learning_rate}')
 
@@ -47,7 +47,7 @@ def train(end_epoch, batch_size, learning_rate):
     train_ds = Data(is_train=True)
     train_dl = torch.utils.data.DataLoader(train_ds, batch_size=batch_size, shuffle=True) #, num_workers=n_workers)
 
-    optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=0.9)
+    optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=momentum)
     criterion = Loss()
 
     plot_dict = {
