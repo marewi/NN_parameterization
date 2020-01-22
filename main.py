@@ -5,7 +5,7 @@ import numpy as np
 from termcolor import colored
 
 from environment import Agent
-from modelTable import Model_table
+from modelTable import Model_table, experienced_rewards
 from neural_network.main import train
 from parameters import *
 
@@ -36,7 +36,7 @@ for episode in range(episodes):
         else:
             print(colored("random action will be taken", 'blue'))
             action = np.random.randint(0, 6)
-        print(f"current state: {agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
+        print(f"current state: {agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")     
         try:
             agent.action(action) # take the action
         except: # if agent runs against barrier of environment
@@ -45,11 +45,15 @@ for episode in range(episodes):
             continue
         # rewarding
         print(f"new state: {agent.num_epochs} | {agent.batch_size} | {agent.learning_rate}")
-        try:
-            reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
-        except Exception as e: # e.g. when "can't allocate memory"
-            print(e)
-            continue
+        if experienced_rewards[state] > 0:
+                reward = experienced_rewards[state]
+                print(f"reward is experienced yet & was gestored")
+        else:
+            try:
+                reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
+            except Exception as e: # e.g. when "can't allocate memory"
+                print(e)
+                continue
         print(colored(f"reward = {reward}", 'green'))
         new_state = (agent.num_epochs, agent.batch_size, agent.learning_rate)
         max_future_q = np.max(q_table[new_state])
@@ -60,6 +64,8 @@ for episode in range(episodes):
         print(f"new q value: {new_q}")
         q_table[state][action] = new_q
         episode_reward += reward
+        # save seen reward for speedup
+        experienced_rewards[state] = reward
     episode_rewards.append(episode_reward)
     epsilon *= EPSILON_DECAY
 
