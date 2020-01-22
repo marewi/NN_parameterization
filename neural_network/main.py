@@ -82,8 +82,6 @@ def train(end_epoch, batch_size, learning_rate):
             loss.backward()
             optimizer.step()
 
-            # print(losses.avg)
-
             # plot_dict['total'].append(loss.item())
             # for k, v in loss_dict.items():
             #     plot_dict[k].append(v.item())
