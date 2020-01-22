@@ -25,7 +25,7 @@
 - [ ] multi-agent RL
 - [ ] num_workers?
 - [ ] momentum instead of batch size
-- [ ] when is nan?
+- [X] when is nan? --> loss is the large for datatype float
 - [ ] partitioning of training process
     - [ ] save Q-values in table
 - [ ] outsourcing of dynamic start generation in lib
