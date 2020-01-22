@@ -17,11 +17,9 @@ class Model_table:
                     self.q_table[(i/(1/num_epochs_stepsize), 
                         ii/(1/batch_size_stepsize), 
                         iii/(1/learning_rate_stepsize))] = [0 for i in range(6)]
-
         # print(amount_num_epochs)
         # print(amount_batch_size)
         # print(amount_learning_rate)
-
         self.experienced_rewards = {}
         for key in self.q_table.keys():
             self.experienced_rewards[key] = 0

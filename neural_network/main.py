@@ -5,6 +5,7 @@ import pandas as pd
 import torch.optim as optim
 from progress.bar import Bar
 import matplotlib.pyplot as plt
+import time
 
 from neural_network.model import Net
 from neural_network.loss import Loss, AverageMeter
@@ -30,12 +31,13 @@ def save_plots(plot_dict):
 
 # Training of NN
 def train(end_epoch, batch_size, learning_rate):
+    start_time = time.time()
     # print(f'training running with end_epoch = {end_epoch} & batch_size = {batch_size} & learning_rate = {learning_rate}')
 
     # end_epoch = 20
     # batch_size = 16
     # learning_rate = 0.001
-    n_workers = 8
+    # n_workers = 8
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -43,7 +45,7 @@ def train(end_epoch, batch_size, learning_rate):
     net = Net().to(device)
 
     train_ds = Data(is_train=True)
-    train_dl = torch.utils.data.DataLoader(train_ds, batch_size=batch_size, shuffle=True, num_workers=n_workers)
+    train_dl = torch.utils.data.DataLoader(train_ds, batch_size=batch_size, shuffle=True) #, num_workers=n_workers)
 
     optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=0.9)
     criterion = Loss()
@@ -102,7 +104,7 @@ def train(end_epoch, batch_size, learning_rate):
     # print('Saving model')
     # save_plots(plot_dict)
     # torch.save(net.state_dict(), MODEL_PATH)
-
+    print(f"NN exec time: {time.time() - start_time}")
     return(losses.avg)
 
 

@@ -5,12 +5,13 @@ import numpy as np
 from termcolor import colored
 
 from environment import Agent
-from modelTable import Model_table, experienced_rewards
+from modelTable import Model_table
 from neural_network.main import train
 from parameters import *
 
 print("Creating RL model...")
 q_table = Model_table().q_table
+experienced_rewards = Model_table().experienced_rewards
 episode_rewards = []
 barrier_counter = 0
 
@@ -24,6 +25,7 @@ for episode in range(episodes):
     lr_decimal_place = str(abs(int(math.log10(learning_rate_stepsize)))) # decimal place of lr_stepsize
     lr_decimal_place_str = "{0:." + lr_decimal_place + "f}"  # "{0:.2f}" # building formating string
     learning_rate_start = float(lr_decimal_place_str.format(learning_rate_start))
+    # create agent in random start
     agent = Agent(num_epochs=num_epochs_start, \
         batch_size=batch_size_start, \
         learning_rate=learning_rate_start)
@@ -75,14 +77,15 @@ print(f"---------------------------TRAINING IS DONE----------------------------"
 
 ### identify best parameter set
 max_v_value = 0
-max_v_value_key = (0,0,0)
+max_v_key = (0,0,0)
 for key in q_table:
     v_value = np.max(q_table[key])
     if v_value > max_v_value:
         max_v_value = v_value
-        max_v_value_key = key
+        max_v_key = key
 
 print(f"amount of barrier bumps: {barrier_counter}")
 
 print(colored(f"overall max V value: {max_v_value}", 'cyan'))
-print(colored(f"overall best parameter set: {max_v_value_key}", 'cyan'))
+print(colored(f"overall min loss value: {128 - experienced_rewards[max_v_key]}", 'cyan'))
+print(colored(f"overall best parameter set: {max_v_key}", 'cyan'))

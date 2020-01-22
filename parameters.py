@@ -6,8 +6,8 @@ batch_size_stepsize = 1
 learning_rate_stepsize = 0.001
 
 # barriers of parameters
-num_epochs_min = 10
-num_epochs_max = 20
+num_epochs_min = 1
+num_epochs_max = 2
 
 batch_size_min = 10
 batch_size_max = 20
@@ -19,10 +19,10 @@ learning_rate_max = 0.1
 ################################
 ### LEARNING PARAMETERS
 # amount of episodes
-episodes = 2
+episodes = 1
 
 # amount of steps (per episode)
-steps = 3
+steps = 1
 
 # learning rate of RL
 LR = 0.1
