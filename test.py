@@ -1,4 +1,4 @@
-# from neural_network.main import train
+from neural_network.main import train
 # from modelTable import Model_table
 
 # try:
@@ -19,3 +19,7 @@
 # print(experienced_rewards)
 
 # print(experienced_rewards[(10, 10, 0.1)])
+
+test = train(20, 16, 0.001)
+
+print(test)
