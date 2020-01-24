@@ -1,3 +1,6 @@
+import math
+import numpy as np
+from parameters import *
 from neural_network.main import train
 # from modelTable import Model_table
 
@@ -23,3 +26,16 @@ from neural_network.main import train
 test = train(20, 16, 0.001)
 
 print(test)
+
+
+
+
+# #####################
+
+# learning_rate_start = np.random.randint(learning_rate_min/learning_rate_stepsize, \
+#             learning_rate_max/learning_rate_stepsize)*learning_rate_stepsize
+# lr_decimal_place = str(abs(int(math.log10(learning_rate_stepsize)))) # decimal place of lr_stepsize
+# lr_decimal_place_str = "{0:." + lr_decimal_place + "f}"  # "{0:.2f}" # building formating string
+# learning_rate_start = float(lr_decimal_place_str.format(learning_rate_start))
+
+# print(learning_rate_start)

@@ -13,6 +13,7 @@ from modelTable import Model_table
 from neural_network.main import train
 from parameters import *
 
+EPSILON = epsilon
 start_time = time.time()
 print("Creating RL model...")
 q_table = Model_table().q_table
@@ -110,7 +111,7 @@ dt = datetime.datetime.now()
 
 file = open("results.txt", "w")
 file.write(f"num_epochs_stepsize: {num_epochs_stepsize}\nbatch_size_stepsize: {batch_size_stepsize}\nlearning_rate_stepsize: {learning_rate_stepsize}\nnum_epochs_min: {num_epochs_min}\nnum_epochs_max: {num_epochs_max}\nbatch_size_min: {batch_size_min}\nbatch_size_max: {batch_size_max}\nlearning_rate_min: {learning_rate_min}\nlearning_rate_max: {learning_rate_max}\n\n")
-file.write(f"RL episodes: {episodes}\nRL steps: {steps}\nRL LR: {LR}\nRL discount factor: {DISCOUNT}\nRL epsilon: {epsilon}\nRL epsilon decay: {EPSILON_DECAY}\n\n")
+file.write(f"RL episodes: {episodes}\nRL steps: {steps}\nRL LR: {LR}\nRL discount factor: {DISCOUNT}\nRL epsilon: {EPSILON}\nRL epsilon decay: {EPSILON_DECAY}\n\n")
 file.write(f"amount of barrier bumps: {barrier_counter}\namount of NN trainings: {num_NN_train}\noverall exec time: {overall_time}\noverall max V value: {max_v_value}\noverall min loss value: {final_min_loss_value}\noverall best parameter set: {final_min_loss_key}\n\n")
 file.write(f"datetime: {dt}")
 file.close()
