@@ -17,7 +17,7 @@ RL epsilon decay: 0.9999
 
 amount of barrier bumps: 0
 amount of NN trainings: 1
-overall exec time: 50.22838234901428
-overall max V value: 12.780419516107068
-overall min loss value: 0.19580483892931966
-overall best parameter set: (19.0, 29.0, 0.047)
+overall exec time: 79.86929392814636
+overall max V value: 12.617500252723694
+overall min loss value: 1.8249974727630587
+overall best parameter set: (25.0, 16.0, 0.074)

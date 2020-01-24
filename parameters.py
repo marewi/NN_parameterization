@@ -22,7 +22,7 @@ learning_rate_max = 0.1
 episodes = 1#0
 
 # amount of steps (per episode)
-steps = 1#00
+steps = 10#0
 
 # learning rate of RL
 LR = 0.1
