@@ -21,11 +21,11 @@
 - [ ] make Q-values independend on amount of visits of state-action pair
     - [X] random start
 - [X] multithreading/-processing to catch errors in NN-training
-- [?] instead of train NN in every state, use old reward if state was visited before
-- [ ] suggestion based on minimal loss instead of max V value
+- [X] instead of train NN in every state, use old reward if state was visited before
+- [X] suggestion based on minimal loss instead of max V value
 - [ ] multi-agent RL
 - [ ] num_workers?
-- [ ] momentum instead of batch size
+- [?] momentum instead of batch size
 - [X] when is nan? --> loss is the large for datatype float
 - [ ] partitioning of training process
     - [ ] save Q-values in table
