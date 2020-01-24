@@ -9,15 +9,17 @@ learning_rate_min: 0
 learning_rate_max: 0.1
 
 RL episodes: 1
-RL steps: 1
+RL steps: 5
 RL LR: 0.1
 RL discount factor: 0.95
 RL epsilon: 0.49995
 RL epsilon decay: 0.9999
 
 amount of barrier bumps: 0
-amount of NN trainings: 1
-overall exec time: 79.86929392814636
-overall max V value: 12.617500252723694
-overall min loss value: 1.8249974727630587
-overall best parameter set: (25.0, 16.0, 0.074)
+amount of NN trainings: 5
+overall exec time: 323.44811034202576
+overall max V value: 12.768097844328732
+overall min loss value: 0.3190215567126842
+overall best parameter set: (20.0, 15.0, 0.019)
+
+datetime: 2020-01-24 15:03:04.127337

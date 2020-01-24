@@ -1,16 +1,17 @@
+import datetime
 import math
 import operator
+import time
 
 import numpy as np
 from termcolor import colored
 
 from environment import Agent
+from lib.minLoss import getMinLoss
+from lib.writeXLSX import writeXLSX
 from modelTable import Model_table
 from neural_network.main import train
 from parameters import *
-from lib.minLoss import getMinLoss
-from lib.writeXLSX import writeXLSX
-import time
 
 start_time = time.time()
 print("Creating RL model...")
@@ -103,13 +104,17 @@ final_min_loss_key, final_min_loss_value = getMinLoss(experienced_rewards)
 
 overall_time = time.time() - start_time
 
+writeXLSX(min_losses)
+
+dt = datetime.datetime.now()
+
 file = open("results.txt", "w")
 file.write(f"num_epochs_stepsize: {num_epochs_stepsize}\nbatch_size_stepsize: {batch_size_stepsize}\nlearning_rate_stepsize: {learning_rate_stepsize}\nnum_epochs_min: {num_epochs_min}\nnum_epochs_max: {num_epochs_max}\nbatch_size_min: {batch_size_min}\nbatch_size_max: {batch_size_max}\nlearning_rate_min: {learning_rate_min}\nlearning_rate_max: {learning_rate_max}\n\n")
 file.write(f"RL episodes: {episodes}\nRL steps: {steps}\nRL LR: {LR}\nRL discount factor: {DISCOUNT}\nRL epsilon: {epsilon}\nRL epsilon decay: {EPSILON_DECAY}\n\n")
-file.write(f"amount of barrier bumps: {barrier_counter}\namount of NN trainings: {num_NN_train}\noverall exec time: {overall_time}\noverall max V value: {max_v_value}\noverall min loss value: {final_min_loss_value}\noverall best parameter set: {final_min_loss_key}")
+file.write(f"amount of barrier bumps: {barrier_counter}\namount of NN trainings: {num_NN_train}\noverall exec time: {overall_time}\noverall max V value: {max_v_value}\noverall min loss value: {final_min_loss_value}\noverall best parameter set: {final_min_loss_key}\n\n")
+file.write(f"datetime: {dt}")
 file.close()
 
-writeXLSX(min_losses)
 # print(f"min_losses: {min_losses}")
 # print(f"amount of barrier bumps: {barrier_counter}")
 # print(f"amount of NN trainings: {num_NN_train}")

@@ -19,8 +19,9 @@ def writeXLSX(self):
 
     # Iterate over the data and write it out row by row.
     for set, loss in (self):
-        worksheet.write(row, col, str(set))
-        worksheet.write(row, col + 1, str(loss))
+        worksheet.write(row, col    , row)
+        worksheet.write(row, col + 1, str(set))
+        worksheet.write(row, col + 2, str(loss))
         row += 1
 
     # Write a total using a formula.
