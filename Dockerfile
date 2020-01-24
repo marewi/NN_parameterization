@@ -17,7 +17,9 @@ RUN pip install --upgrade pip && \
     pip install pandas && \
     pip install progress && \
     pip install torchvision && \
-    pip install Pillow==6.0
+    pip install Pillow==6.0 && \
+    pip install XlsxWriter
+
 
 WORKDIR '/nn_parameterization'
 

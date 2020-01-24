@@ -8,11 +8,16 @@ from environment import Agent
 from modelTable import Model_table
 from neural_network.main import train
 from parameters import *
+from lib.minLoss import getMinLoss
+from lib.writeXLSX import writeXLSX
+import time
 
+start_time = time.time()
 print("Creating RL model...")
 q_table = Model_table().q_table
 experienced_rewards = Model_table().experienced_rewards
-episode_rewards = []
+# episode_rewards = []
+min_losses = []
 barrier_counter = 0
 num_NN_train = 0
 
@@ -53,7 +58,12 @@ for episode in range(episodes):
                 print(f"reward was experienced yet & was gestored")
         else:
             try:
-                reward = 128 - train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
+                loss = train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
+                if loss == 'nan' or loss == 'NaN':
+                    reward = 0
+                    print(f"loss was to high: {loss} -> reward={reward}")
+                else:
+                    reward = 128 - loss
                 num_NN_train += 1
             except Exception as e: # e.g. when "can't allocate memory"
                 print(e)
@@ -68,9 +78,12 @@ for episode in range(episodes):
         print(f"new q value: {new_q}")
         q_table[state][action] = new_q
         episode_reward += reward
-        # save seen reward for speedup
+        # speedup: save seen reward
         experienced_rewards[state] = reward
-    episode_rewards.append(episode_reward)
+        # save successes
+        current_min_loss = getMinLoss(experienced_rewards)
+        min_losses.append(current_min_loss)
+    # episode_rewards.append(episode_reward)
     epsilon *= EPSILON_DECAY
 
 print(f"---------------------------TRAINING IS DONE----------------------------")
@@ -86,20 +99,20 @@ for key in q_table:
         max_v_value = v_value
         max_v_key = key
 
-min_loss_value = 0
-min_loss_key = (0,0,0)
-for key in experienced_rewards:
-    loss_value = np.min(experienced_rewards[key])
-    if loss_value > min_loss_value:
-        min_loss_value = loss_value
-        min_loss_key = key
+final_min_loss_key, final_min_loss_value = getMinLoss(experienced_rewards)
+
+overall_time = time.time() - start_time
 
 file = open("results.txt", "w")
-file.write(f"amount of barrier bumps: {barrier_counter}\namount of NN trainings: {num_NN_train}\noverall max V value: {max_v_value}\noverall min loss value: {128 - experienced_rewards[max_v_key]}\noverall best parameter set: {max_v_key}")
+file.write(f"num_epochs_stepsize: {num_epochs_stepsize}\nbatch_size_stepsize: {batch_size_stepsize}\nlearning_rate_stepsize: {learning_rate_stepsize}\nnum_epochs_min: {num_epochs_min}\nnum_epochs_max: {num_epochs_max}\nbatch_size_min: {batch_size_min}\nbatch_size_max: {batch_size_max}\nlearning_rate_min: {learning_rate_min}\nlearning_rate_max: {learning_rate_max}\n\n")
+file.write(f"RL episodes: {episodes}\nRL steps: {steps}\nRL LR: {LR}\nRL discount factor: {DISCOUNT}\nRL epsilon: {epsilon}\nRL epsilon decay: {EPSILON_DECAY}\n\n")
+file.write(f"amount of barrier bumps: {barrier_counter}\namount of NN trainings: {num_NN_train}\noverall exec time: {overall_time}\noverall max V value: {max_v_value}\noverall min loss value: {128 - experienced_rewards[max_v_key]}\noverall best parameter set: {max_v_key}")
 file.close()
 
+writeXLSX(min_losses)
+print(f"min_losses: {min_losses}")
 print(f"amount of barrier bumps: {barrier_counter}")
 print(f"amount of NN trainings: {num_NN_train}")
 print(colored(f"overall max V value: {max_v_value}", 'cyan'))
-print(colored(f"overall min loss value: {128 - experienced_rewards[min_loss_key]}", 'cyan'))
-print(colored(f"overall best parameter set: {min_loss_key}", 'cyan'))
+print(colored(f"overall min loss value: {final_min_loss_value}", 'cyan'))
+print(colored(f"overall best parameter set: {final_min_loss_key}", 'cyan'))

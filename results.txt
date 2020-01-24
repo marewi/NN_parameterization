@@ -1,5 +1,23 @@
+num_epochs_stepsize: 1
+batch_size_stepsize: 1
+learning_rate_stepsize: 0.001
+num_epochs_min: 15
+num_epochs_max: 30
+batch_size_min: 15
+batch_size_max: 30
+learning_rate_min: 0
+learning_rate_max: 0.1
+
+RL episodes: 1
+RL steps: 1
+RL LR: 0.1
+RL discount factor: 0.95
+RL epsilon: 0.49995
+RL epsilon decay: 0.9999
+
 amount of barrier bumps: 0
 amount of NN trainings: 1
-overall max V value: 12.708734406352043
-overall min loss value: 0.9126559364795668
-overall best parameter set: (26.0, 28.0, 0.059)
+overall exec time: 50.22838234901428
+overall max V value: 12.780419516107068
+overall min loss value: 0.19580483892931966
+overall best parameter set: (19.0, 29.0, 0.047)
