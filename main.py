@@ -66,6 +66,8 @@ for episode in range(episodes):
                     print(f"loss was to high: {loss} -> reward={reward}")
                 else:
                     reward = 128 - loss
+                    if reward < 0:
+                        reward = 0
                 num_NN_train += 1
             except Exception as e: # e.g. when "can't allocate memory"
                 print(e)
