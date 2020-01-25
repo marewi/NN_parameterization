@@ -61,7 +61,7 @@ for episode in range(episodes):
         else:
             try:
                 loss = train(agent.num_epochs, agent.batch_size, agent.learning_rate) # calling neural network
-                if loss == 'nan' or loss == 'NaN':
+                if math.isnan(loss) == True: #loss == 'nan' or loss == 'NaN':
                     reward = 0
                     print(f"loss was to high: {loss} -> reward={reward}")
                 else:
