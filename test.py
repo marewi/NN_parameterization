@@ -39,3 +39,11 @@ print(test)
 # learning_rate_start = float(lr_decimal_place_str.format(learning_rate_start))
 
 # print(learning_rate_start)
+
+
+# a = 0.036000000000000004
+# print(a)
+
+# b = float("{0:.3f}".format(a))
+# print(b)
+# print(type(b))

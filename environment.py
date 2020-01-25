@@ -27,9 +27,15 @@ class Agent:
 
 
     def change(self, ep=0, bs=0, lr=0):
-        self.num_epochs += ep
-        self.batch_size += bs
-        self.learning_rate += lr
+        print(f"ep:{ep}, bs:{bs}, lr:{lr}")
+
+        self.num_epochs = self.num_epochs + ep
+        self.batch_size = self.batch_size + bs
+        self.learning_rate = self.learning_rate + lr
+
+        self.learning_rate = float("{0:.3f}".format(self.learning_rate))
+
+        print(f"num_epochs:{self.num_epochs}, batch_size:{self.batch_size}, learning_rate:{self.learning_rate}")
 
         barrier = False
 
