@@ -13,29 +13,23 @@ class Agent:
     def action(self, choice):
         print(f"action {choice} will be taken")
         if choice == 0:
-            self.change(num_epochs=num_epochs_stepsize) # higher
+            self.change(ep=num_epochs_stepsize) # higher
         elif choice == 1:
-            self.change(num_epochs=-num_epochs_stepsize) # lower
-        
+            self.change(ep=-num_epochs_stepsize) # lower
         elif choice == 2:
-            self.change(batch_size=batch_size_stepsize) # higher
+            self.change(bs=batch_size_stepsize) # higher
         elif choice == 3:
-            self.change(batch_size=-batch_size_stepsize) # lower
-        
+            self.change(bs=-batch_size_stepsize) # lower
         elif choice == 4:
-            self.change(learning_rate=learning_rate_stepsize) # higher
+            self.change(lr=learning_rate_stepsize) # higher
         elif choice == 5:
-            self.change(learning_rate=-learning_rate_stepsize) # lower
+            self.change(lr=(learning_rate_stepsize*-1)) # lower
 
 
-    def change(self, num_epochs=False, batch_size=False, learning_rate=False):
-        self.num_epochs += num_epochs
-        self.batch_size += batch_size
-        self.learning_rate += learning_rate
-
-        # 1 <= num_epochs <= 10
-        # 1 <= batch_size <= 10
-        # 0 <= learning_rate <= 1
+    def change(self, ep=0, bs=0, lr=0):
+        self.num_epochs += ep
+        self.batch_size += bs
+        self.learning_rate += lr
 
         barrier = False
 
