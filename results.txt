@@ -8,18 +8,18 @@ batch_size_max: 30
 learning_rate_min: 0
 learning_rate_max: 0.1
 
-RL episodes: 1
-RL steps: 5
+RL episodes: 10
+RL steps: 100
 RL LR: 0.1
 RL discount factor: 0.95
-RL epsilon: 0.49995
+RL epsilon: 0.5
 RL epsilon decay: 0.9999
 
-amount of barrier bumps: 1
-amount of NN trainings: 4
-overall exec time: 305.9796233177185
-overall max V value: 12.756423543572426
-overall min loss value: 0.4357645642757433
-overall best parameter set: (28.0, 22.0, 0.073)
+amount of barrier bumps: 245
+amount of NN trainings: 396
+overall exec time: 40073.80409312248
+overall max V value: 159.70669659645912
+overall min loss value: 0.01136340035591843
+overall best parameter set: (26.0, 18.0, 0.015)
 
-datetime: 2020-01-24 15:17:10.505610
+datetime: 2020-01-26 02:40:49.033132
