@@ -23,10 +23,10 @@ from neural_network.main import train
 
 # print(experienced_rewards[(10, 10, 0.1)])
 
-test = train(20, 16, 0.001) # -> 0.1523854398727417
-# optimal first run: (26.0, 18.0, 0.015) -> 0.01136340035591843
+     manually = train(20, 16, 0.001) -> 0.1523854398727417
+training_loss = train(26, 18, 0.015) -> 0.01136340035591843
 
-print(test)
+print(manually)
 
 
 
