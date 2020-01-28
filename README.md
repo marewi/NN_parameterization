@@ -1,4 +1,12 @@
-# Optimization of a Neural Network by finding the optimal combination of parameters
+# Optimization of a Neural Network by minimze its loss
+The Goal of this model is to minimze the loss of an convolutional neural network by parameterize the CNN as optimal as possible.
+In contrast to a brute force search the computation time was reduced from 25days to 23,3hours and in contrast to an expert parameterized NN the loss was reduced by 7%.
+
+3 parameters of the CNN where used to optimize:
+1. learning rate [0;0.1]
+2. number of epochs [15;30]
+3. batch size [15;30]
+
 using Q-Learning (https://link.springer.com/content/pdf/10.1007/BF00992698.pdf)
 
 developed by Marc Wittlinger @ Reutlingen University
