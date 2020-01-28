@@ -1,4 +1,6 @@
 # Optimization of a Neural Network by minimze its loss
+developed by Marc Wittlinger @ Reutlingen University
+
 The Goal of this model is to minimze the loss of an convolutional neural network by parameterize the CNN as optimal as possible.
 In contrast to a brute force search the computation time was reduced from 25days to 23,3hours and in contrast to an expert parameterized NN the loss was reduced by 7%.
 
@@ -8,8 +10,6 @@ In contrast to a brute force search the computation time was reduced from 25days
 3. batch size [15;30]
 
 using Q-Learning (https://link.springer.com/content/pdf/10.1007/BF00992698.pdf)
-
-developed by Marc Wittlinger @ Reutlingen University
 
 Feel free to use this implementation in your own scenario or to be inspired by the awesomeness of Q-Learning :-)
 
