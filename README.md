@@ -1,5 +1,7 @@
 # Optimization of a Neural Network by finding the optimal combination of parameters
 using Q-Learning (https://link.springer.com/content/pdf/10.1007/BF00992698.pdf)
+developed by Marc Wittlinger @ Reutlingen University
+Feel free to use this implementation in your own scenario or to be inspired by the awesomeness of Q-Learning :-)
 
 This prototyp was developed as an container-based application to minimize the influence of the application to the execution environment and its operating system. Use the following commands to execute the docker-based application:
 
