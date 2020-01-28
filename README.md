@@ -1,4 +1,7 @@
 # Optimization of a Neural Network by finding the optimal combination of parameters
+using Q-Learning (https://link.springer.com/content/pdf/10.1007/BF00992698.pdf)
+
+This prototyp was developed as an container-based application to minimize the influence of the application to the execution environment and its operating system. Use the following commands to execute the docker-based application:
 
 ### build image
     docker build --rm -f Dockerfile -t nn_parameterization .
@@ -9,14 +12,16 @@
 ### conncecting to running container
     docker attach <container>
 
+### run script
+    python main.py
+    
+An alternative to copy the local project to the docker container, is so clone this repo into your running container:    
 ### clone repo in container
     git checkout <branch-name>
     git pull
 
-### run script
-    python main.py
-
 ### TODOS
+Here are some completed tasks and some more ideas so optimize the performance of the RL Algorithm:
 - [X] dont calculate new_q when running against barriers (e.g. penalizing when barrier)
 - [ ] make Q-values independend on amount of visits of state-action pair
     - [X] random start
